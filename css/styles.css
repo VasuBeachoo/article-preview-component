@@ -172,3 +172,32 @@ body {
   padding: 3px;
   transform: rotate(45deg) translate(0, -10.2px);
 }
+
+@media (max-width: 750px) {
+  .component {
+    flex-direction: column;
+    width: 340px;
+  }
+
+  .img-section {
+    width: 340px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .drawers-img {
+    width: 420px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .text-section {
+    padding: 30px;
+  }
+
+  .text-heading {
+    font-size: 17px;
+  }
+
+  .text-paragraph {
+    margin: 3px 0 27px 0;
+  }
+}

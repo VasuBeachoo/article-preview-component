@@ -1,3 +1,5 @@
+let screenType = "";
+
 const tooltipContainerDesktop = document.createElement("div");
 tooltipContainerDesktop.className = "tooltip-container-desktop";
 
@@ -26,31 +28,71 @@ pinterestIcon.alt = "icon-pinterest";
 const tooltipArrow = document.createElement("i");
 tooltipArrow.className = "tooltip-arrow";
 
-tooltipBody.append(tooltipText, facebookIcon, twitterIcon, pinterestIcon);
-tooltipContainerDesktop.append(tooltipBody, tooltipArrow);
-
+const textSection = document.querySelector(".text-section");
+const authorSection = document.querySelector(".author-section");
+const authorImg = document.querySelector(".author-img");
+const authorInfo = document.querySelector(".author-info");
 const iconContainer = document.querySelector(".icon-container");
 const shareIconContainer = document.querySelector(".share-icon-container");
 const shareIcon = document.querySelector(".share-icon");
 
 function showShareIcons() {
-  iconContainer && iconContainer.append(tooltipContainerDesktop);
+  iconContainer.className = "icon-container opened-container";
+  shareIconContainer.className = "share-icon-container dark-container";
+  shareIcon.className = "share-icon light-icon";
+  if (screenType === "desktop") {
+    tooltipBody.append(tooltipText, facebookIcon, twitterIcon, pinterestIcon);
+    tooltipContainerDesktop.append(tooltipBody, tooltipArrow);
+    iconContainer.append(tooltipContainerDesktop);
+  }
+  if (screenType === "mobile") {
+    authorInfo.remove();
+    authorImg.remove();
+    authorSection.append(tooltipText, facebookIcon, twitterIcon, pinterestIcon);
+    authorSection.className = "author-section dark-background";
+  }
 }
 
 function hideShareIcons() {
-  tooltipContainerDesktop && tooltipContainerDesktop.remove();
+  iconContainer.className = "icon-container closed-container";
+  shareIconContainer.className = "share-icon-container light-container";
+  shareIcon.className = "share-icon dark-icon";
+  if (screenType === "desktop") {
+    document.querySelector(".tooltip-container-desktop") &&
+      tooltipContainerDesktop.remove();
+  }
+  if (screenType === "mobile") {
+    tooltipText.remove();
+    facebookIcon.remove();
+    twitterIcon.remove();
+    pinterestIcon.remove();
+    authorSection.append(authorImg, authorInfo);
+    authorSection.className = "author-section white-background";
+  }
 }
 
 shareIconContainer.addEventListener("click", () => {
   if (iconContainer.className === "icon-container closed-container") {
     showShareIcons();
-    iconContainer.className = "icon-container opened-container";
-    shareIconContainer.className = "share-icon-container dark-container";
-    shareIcon.className = "share-icon light-icon";
   } else if (iconContainer.className === "icon-container opened-container") {
     hideShareIcons();
-    iconContainer.className = "icon-container closed-container";
-    shareIconContainer.className = "share-icon-container light-container";
-    shareIcon.className = "share-icon dark-icon";
   }
 });
+
+function handleResize() {
+  let currentType = screenType;
+  if (window.innerWidth < 750) {
+    if (currentType === "desktop") {
+      hideShareIcons();
+    }
+    screenType = "mobile";
+  } else {
+    if (currentType === "mobile") {
+      hideShareIcons();
+    }
+    screenType = "desktop";
+  }
+}
+
+window.addEventListener("resize", handleResize);
+handleResize();

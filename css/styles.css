@@ -79,9 +79,18 @@ body {
   align-items: center;
 }
 
+.white-background {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.dark-background {
+  background-color: hsl(217, 19%, 35%);
+}
+
 .author-img {
   width: 40px;
   border-radius: 100%;
+  order: 0;
 }
 
 .author-info {
@@ -89,6 +98,7 @@ body {
   flex-direction: column;
   justify-content: center;
   margin-left: 14px;
+  order: 2;
 }
 
 .author-name {
@@ -102,6 +112,7 @@ body {
 }
 
 .icon-container {
+  order: 3;
   margin-left: auto;
 }
 
@@ -198,6 +209,23 @@ body {
   }
 
   .text-paragraph {
-    margin: 3px 0 27px 0;
+    margin: 3px 0 20px 0;
+  }
+
+  .author-section {
+    height: 40px;
+    padding: 25px 30px;
+    border-radius: 0 0 10px 10px;
+    margin: -10px -30px -30px -30px;
+  }
+
+  .tooltip-text {
+    font-size: 12px;
+    margin-right: 15px;
+  }
+
+  .social-media-icon {
+    width: 25px;
+    margin: 0 10px;
   }
 }

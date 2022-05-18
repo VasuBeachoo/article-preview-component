@@ -101,9 +101,74 @@ body {
   margin: 0;
 }
 
-.share-icon {
-  background-color: hsl(210, 46%, 95%);
-  border-radius: 100%;
-  padding: 9px;
+.icon-container {
   margin-left: auto;
+}
+
+.share-icon-container {
+  border-radius: 100%;
+  padding: 4px 8px 6px 9px;
+}
+
+.light-container {
+  background-color: hsl(210, 46%, 95%);
+}
+
+.dark-container {
+  background-color: hsl(214, 17%, 51%);
+}
+
+.share-icon-container:hover {
+  cursor: pointer;
+}
+
+.share-icon {
+  user-select: none;
+}
+
+.light-icon {
+  filter: brightness(0) invert(1);
+}
+
+.tooltip-container-desktop {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  transform: translate(-122px, -92px);
+}
+
+.tooltip-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: hsl(217, 19%, 35%);
+  border-radius: 10px;
+  width: 200px;
+  padding: 15px 30px;
+}
+
+.tooltip-text {
+  color: hsl(212, 23%, 69%);
+  font-size: 11px;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+.social-media-icon {
+  transition: 0.15s;
+}
+
+.social-media-icon:hover {
+  cursor: pointer;
+  filter: invert(0.2);
+}
+
+.tooltip-arrow {
+  border: solid hsl(217, 19%, 35%);
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  transform: rotate(45deg) translate(0, -10.2px);
 }
